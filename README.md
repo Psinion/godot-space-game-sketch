@@ -1,5 +1,7 @@
 # Godot Space Game Sketch
 
+![image](https://github.com/Psinion/godot-space-game-sketch/blob/main/images/image.jpg)
+
 ## About project
 
 My sketch of a space game in 3D using the ECS framework.
