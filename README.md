@@ -18,6 +18,6 @@ My sketch of a space game in 3D using the ECS framework.
 ## Tech Stack
 
 - Godot 4.4.1
-- C#
+- C#, .NET 8
 - [Friflo.Engine.ECS](https://github.com/friflo/Friflo.Engine.ECS)
 
