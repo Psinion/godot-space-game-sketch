@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://vxcymxsydqf6"]
+
+[ext_resource type="Script" uid="uid://b40bqyhdqbrps" path="res://Scripts/Battle/Bodies/CelestialBodyView.cs" id="1_nom5x"]
+[ext_resource type="PackedScene" uid="uid://bwo5h6l1o5bgf" path="res://Art/Models/Dolphin.fbx" id="2_p4jgf"]
+[ext_resource type="Script" uid="uid://dhwbt2yxi7eda" path="res://Scripts/Bodies/Inventory/PlacementsHandlerView.cs" id="3_10d20"]
+[ext_resource type="Script" uid="uid://0c2mqpky7mal" path="res://Scripts/Bodies/Inventory/PlacementView.cs" id="3_nqkow"]
+[ext_resource type="PackedScene" uid="uid://j6gyemo1hwd2" path="res://Prefabs/Vehicles/Thrusters/Thruster.tscn" id="5_10d20"]
+[ext_resource type="Script" uid="uid://du1red76mgwfi" path="res://Scripts/Bodies/ThrustersView.cs" id="5_nom5x"]
+[ext_resource type="Script" uid="uid://dnbleebwmp3h" path="res://Scripts/Bodies/Inventory/WeaponsHandlerView.cs" id="5_nqkow"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nqkow"]
+size = Vector3(1, 2.51804, 0.461418)
+
+[node name="Dolphin" type="CharacterBody3D" node_paths=PackedStringArray("thrustersView")]
+collision_mask = 513
+script = ExtResource("1_nom5x")
+thrustersView = NodePath("Thrusters")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.0414222, 0.999142, 0, -0.999142, -0.0414222, 0, 0.020457, -0.149092)
+shape = SubResource("BoxShape3D_nqkow")
+
+[node name="ModelWrapper" type="Node3D" parent="."]
+
+[node name="Dolphin" parent="ModelWrapper" instance=ExtResource("2_p4jgf")]
+transform = Transform3D(-0.3, 0, -2.62268e-08, 0, 0.3, 0, 2.62268e-08, 0, -0.3, 0, 0, -0.5)
+
+[node name="WeaponPlacements" type="Node3D" parent="ModelWrapper"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+script = ExtResource("3_10d20")
+
+[node name="Placement 1" type="Node3D" parent="ModelWrapper/WeaponPlacements"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 1.25918)
+script = ExtResource("3_nqkow")
+
+[node name="Thrusters" type="Node3D" parent="." node_paths=PackedStringArray("thrustersList")]
+script = ExtResource("5_nom5x")
+thrustersList = []
+
+[node name="BigThrust" parent="Thrusters" instance=ExtResource("5_10d20")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.9)
+
+[node name="SmallThrust" parent="Thrusters" instance=ExtResource("5_10d20")]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, -0.5, -0.204, 0.5)
+
+[node name="SmallThrust2" parent="Thrusters" instance=ExtResource("5_10d20")]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0.5, -0.204, 0.5)
+
+[node name="WeaponsHandler" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.071, 0, 0)
+script = ExtResource("5_nqkow")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://nfk2s8o1my7h"]
+
+[ext_resource type="Script" uid="uid://druip07mfrjpi" path="res://Scripts/Shared/Managers/SceneManager.cs" id="1_rqi4g"]
+
+[node name="GameRoot" type="Node3D"]
+
+[node name="GlobalState" type="Node" parent="."]
+
+[node name="SceneManager" type="Node" parent="GlobalState" node_paths=PackedStringArray("sceneRoot")]
+script = ExtResource("1_rqi4g")
+sceneRoot = NodePath("../../SceneRoot")
+
+[node name="SceneRoot" type="Node" parent="."]

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfg5mj6xh36eq"]
+
+[ext_resource type="Script" uid="uid://bx8kvde0fngwi" path="res://Scripts/Bodies/Inventory/Modules/Weapons/Turrets/TurretView.cs" id="1_hkhgl"]
+[ext_resource type="Script" uid="uid://b0vrl8ga1ncup" path="res://Scripts/Bodies/Inventory/Modules/Weapons/WeaponUnitView.cs" id="2_lp17q"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ufjq1"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ufjq1"]
+
+[node name="Turret" type="Node3D" node_paths=PackedStringArray("horizontalPivot", "verticalPivot")]
+script = ExtResource("1_hkhgl")
+horizontalPivot = NodePath("Head")
+verticalPivot = NodePath("Head/Gun")
+
+[node name="Head" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+mesh = SubResource("BoxMesh_ufjq1")
+
+[node name="Gun" type="Node3D" parent="Head"]
+
+[node name="Cylinder" type="MeshInstance3D" parent="Head/Gun"]
+transform = Transform3D(9.55343e-16, 2.18557e-08, 0.5, 0.5, -2.18557e-08, 0, 2.18557e-08, 0.5, -2.18557e-08, 0, 0, -1)
+mesh = SubResource("CylinderMesh_ufjq1")
+
+[node name="Weapon Unit" type="Node3D" parent="Head/Gun/Cylinder"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, -1.28139, 0)
+script = ExtResource("2_lp17q")

@@ -1,0 +1,59 @@
+[gd_scene load_steps=13 format=3 uid="uid://c3heky64gflpq"]
+
+[ext_resource type="Script" uid="uid://dkxa131v86ljd" path="res://Scripts/Pooling/Flyweights/ExplosionFlyweightView.cs" id="1_bwtkd"]
+[ext_resource type="Material" uid="uid://b8bqqkuc32s1n" path="res://Art/Materials/ExplosionParticleMaterial.tres" id="2_2mwjo"]
+
+[sub_resource type="Curve" id="Curve_ojpud"]
+_data = [Vector2(0, 0), 0.0, 2.26732, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_trj7o"]
+texture_mode = 1
+curve = SubResource("Curve_ojpud")
+
+[sub_resource type="Gradient" id="Gradient_enbfy"]
+offsets = PackedFloat32Array(0, 0.705263)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ojpud"]
+gradient = SubResource("Gradient_enbfy")
+
+[sub_resource type="Curve" id="Curve_trj7o"]
+_data = [Vector2(0.00321543, 1), 0.0, 0.0, 0, 0, Vector2(0.0482315, 0.494819), -0.620176, -0.620176, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_csbup"]
+curve = SubResource("Curve_trj7o")
+
+[sub_resource type="Curve" id="Curve_csbup"]
+_limits = [0.0, 1.5, 0.0, 1.0]
+_data = [Vector2(0, 0.0602331), 0.0, 3.92778, 0, 0, Vector2(0.752412, 1.5), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ywm3y"]
+curve = SubResource("Curve_csbup")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_enbfy"]
+particle_flag_align_y = true
+emission_shape = 1
+emission_sphere_radius = 0.1
+radial_velocity_min = 1.49998
+radial_velocity_max = 2.49998
+radial_velocity_curve = SubResource("CurveTexture_csbup")
+gravity = Vector3(0, 0, 0)
+scale_max = 1.25
+scale_curve = SubResource("CurveTexture_ywm3y")
+color_ramp = SubResource("GradientTexture1D_ojpud")
+alpha_curve = SubResource("CurveTexture_trj7o")
+
+[sub_resource type="SphereMesh" id="SphereMesh_ojpud"]
+
+[node name="Explosion" type="Node3D"]
+script = ExtResource("1_bwtkd")
+
+[node name="Explosion Effect" type="GPUParticles3D" parent="."]
+material_override = ExtResource("2_2mwjo")
+lifetime = 5.0
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_enbfy")
+draw_pass_1 = SubResource("SphereMesh_ojpud")

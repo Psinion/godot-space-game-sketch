@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bphonhwsk5jr7"]
+
+[ext_resource type="Script" uid="uid://c7p6bodgnaxxy" path="res://Scripts/Global/GlobalTestButton.cs" id="1_tt5f1"]
+[ext_resource type="Script" uid="uid://dh20st037hlr7" path="res://Scripts/Global/LocalTestButton.cs" id="2_853f1"]
+
+[node name="MainMenu" type="Node3D"]
+
+[node name="GlobalGameButton" type="Button" parent="."]
+visible = false
+offset_left = 353.0
+offset_top = 94.0
+offset_right = 794.0
+offset_bottom = 245.0
+text = "Global Map"
+script = ExtResource("1_tt5f1")
+
+[node name="LocalGameButton" type="Button" parent="."]
+offset_left = 354.0
+offset_top = 316.0
+offset_right = 795.0
+offset_bottom = 467.0
+text = "Local Map"
+script = ExtResource("2_853f1")

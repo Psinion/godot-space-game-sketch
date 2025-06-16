@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8qtpnkdxdxdp"]
+
+[ext_resource type="Script" uid="uid://dkxa131v86ljd" path="res://Scripts/Pooling/Flyweights/ExplosionFlyweightView.cs" id="1_cki7n"]
+[ext_resource type="Material" uid="uid://cdfjaxlylc81m" path="res://Art/Materials/ExplosionMaterial.tres" id="2_cki7n"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_cki7n"]
+
+[node name="Explosion" type="Node3D"]
+script = ExtResource("1_cki7n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_cki7n")
+mesh = SubResource("SphereMesh_cki7n")

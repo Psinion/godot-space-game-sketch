@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjc2wbe14i8e5"]
+
+[ext_resource type="Material" uid="uid://dd8upa0ox5lcc" path="res://Art/Materials/UnlitShader.tres" id="1_vq44b"]
+[ext_resource type="Script" uid="uid://cdcqic7487w3y" path="res://Scripts/Pooling/Flyweights/ProjectileFlyweightView.cs" id="1_xm8s1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_vq44b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xm8s1"]
+size = Vector3(0.147217, 0.101563, 2.09698)
+
+[node name="Projectile" type="CharacterBody3D"]
+collision_layer = 512
+script = ExtResource("1_xm8s1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-8.74228e-08, 0, 0.05, 0, 0.05, 0, -2, 0, -2.18557e-09, 0, 0, -1)
+mesh = SubResource("BoxMesh_vq44b")
+surface_material_override/0 = ExtResource("1_vq44b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00671387, 0.0146484, -0.984283)
+shape = SubResource("BoxShape3D_xm8s1")

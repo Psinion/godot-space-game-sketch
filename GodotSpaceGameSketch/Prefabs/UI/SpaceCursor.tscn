@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcdnnyxkifeph"]
+
+[ext_resource type="Script" uid="uid://ppg76kjrfbqw" path="res://Scripts/Battle/Interaction/SpaceCursor.cs" id="1_2adej"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_qxria"]
+
+[node name="SpaceCursor" type="MeshInstance3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.1, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("TorusMesh_qxria")
+skeleton = NodePath("")
+script = ExtResource("1_2adej")

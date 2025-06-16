@@ -1,0 +1,39 @@
+[gd_resource type="ShaderMaterial" load_steps=9 format=3 uid="uid://b8bqqkuc32s1n"]
+
+[ext_resource type="Shader" uid="uid://mr7xe15cbddj" path="res://Art/Shaders/CloudParticle.gdshader" id="1_66mcq"]
+[ext_resource type="Texture2D" uid="uid://dpm0bcbh0qytv" path="res://Art/Textures/Effects/Explosions/Noise44.png" id="2_n7vcg"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5x5xg"]
+noise_type = 2
+seed = 232
+frequency = 0.0088
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_e8jw4"]
+noise = SubResource("FastNoiseLite_5x5xg")
+
+[sub_resource type="Gradient" id="Gradient_e8jw4"]
+offsets = PackedFloat32Array(0.189091, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.340919, 0.0324715, 1.20327e-08, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5x5xg"]
+gradient = SubResource("Gradient_e8jw4")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_e8jw4"]
+seed = 6874
+frequency = 0.005
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5x5xg"]
+noise = SubResource("FastNoiseLite_e8jw4")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_66mcq")
+shader_parameter/Speed = 0.3
+shader_parameter/Frequency = 0.5
+shader_parameter/Amplitude = 1.0
+shader_parameter/VertexNoise = SubResource("NoiseTexture2D_5x5xg")
+shader_parameter/ColorNoise = SubResource("NoiseTexture2D_e8jw4")
+shader_parameter/Gradient = SubResource("GradientTexture1D_5x5xg")
+shader_parameter/EmissionColor = Color(1, 0.5, 0.1, 1)
+shader_parameter/EmissionStrength = 10.0
+shader_parameter/TransparentNoise = ExtResource("2_n7vcg")
